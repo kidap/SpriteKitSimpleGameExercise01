@@ -15,6 +15,7 @@
 		A712C62A1CD8F17900CC74DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A712C6281CD8F17900CC74DA /* LaunchScreen.storyboard */; };
 		A712C6331CD8F22D00CC74DA /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = A712C6311CD8F22D00CC74DA /* Sounds */; };
 		A712C6341CD8F22D00CC74DA /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A712C6321CD8F22D00CC74DA /* sprites.atlas */; };
+		A712C6361CD91AFA00CC74DA /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C6351CD91AFA00CC74DA /* GameOverScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		A712C62B1CD8F17900CC74DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A712C6311CD8F22D00CC74DA /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 		A712C6321CD8F22D00CC74DA /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
+		A712C6351CD91AFA00CC74DA /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				A712C61B1CD8F17900CC74DA /* AppDelegate.swift */,
 				A712C6211CD8F17900CC74DA /* GameViewController.swift */,
 				A712C61F1CD8F17900CC74DA /* GameScene.swift */,
+				A712C6351CD91AFA00CC74DA /* GameOverScene.swift */,
 				A712C6231CD8F17900CC74DA /* Main.storyboard */,
 				A712C6261CD8F17900CC74DA /* Assets.xcassets */,
 				A712C6281CD8F17900CC74DA /* LaunchScreen.storyboard */,
@@ -148,6 +151,7 @@
 			files = (
 				A712C6201CD8F17900CC74DA /* GameScene.swift in Sources */,
 				A712C6221CD8F17900CC74DA /* GameViewController.swift in Sources */,
+				A712C6361CD91AFA00CC74DA /* GameOverScene.swift in Sources */,
 				A712C61C1CD8F17900CC74DA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

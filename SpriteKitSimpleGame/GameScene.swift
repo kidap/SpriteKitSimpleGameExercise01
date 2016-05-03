@@ -51,6 +51,7 @@ struct PhysicsCategory{
 class GameScene: SKScene, SKPhysicsContactDelegate {
   
   let player = SKSpriteNode(imageNamed: "player")
+  var monstersKilled = 0
   
   override func didMoveToView(view: SKView) {
     backgroundColor = SKColor.whiteColor()
@@ -67,6 +68,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     physicsWorld.gravity = CGVectorMake(0, 0)
     physicsWorld.contactDelegate = self
+    
+    let backgroundMusic = SKAudioNode(fileNamed: "background-music-aac.caf")
+    backgroundMusic.autoplayLooped = true
+    addChild(backgroundMusic)
+    
     
   }
   func random() -> CGFloat {
@@ -103,7 +109,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //Monster actions
     let actionMove = SKAction.moveTo(CGPoint(x: -monster.size.width/2, y: actualY), duration: NSTimeInterval(actualDuration))
     let actionMoveDone = SKAction.removeFromParent()
-    monster.runAction(SKAction.sequence([actionMove, actionMoveDone]))
+    
+    let lostAction = SKAction.runBlock {
+      let reveal = SKTransition.flipVerticalWithDuration(0.5)
+      let gameOverScene = GameOverScene(size: self.size, won: false)
+      self.view?.presentScene(gameOverScene, transition: reveal)
+    }
+    
+    
+    monster.runAction(SKAction.sequence([actionMove, lostAction,actionMoveDone]))
     
   }
   
@@ -122,6 +136,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //Forward throw only
     if offset.x < 0 {return}
+    runAction(SKAction.playSoundFileNamed("pew-pew-lei.caf", waitForCompletion: false))
     
     stars.physicsBody = SKPhysicsBody(circleOfRadius: stars.size.width/2)
     stars.physicsBody?.dynamic = true
@@ -146,6 +161,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   
   func starCollideWithMonster(star:SKSpriteNode, monster:SKSpriteNode){
     print("Hit")
+    monstersKilled += 1
+    if monstersKilled == 1{
+      self.view?.presentScene(GameOverScene(size: self.size, won: true), transition: SKTransition.flipVerticalWithDuration(0.5))
+    }
+    
+    
     star.removeFromParent()
     monster.removeFromParent()
   }
